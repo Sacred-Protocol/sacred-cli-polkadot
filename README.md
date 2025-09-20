@@ -46,8 +46,8 @@ npm run dev -- --help
 npm run dev -- deposit --platform 1 --recipient-user-id 123456789 --amount 0.01
 
 # Enhanced deposit with optional fields
-npm run dev -- deposit --platform 1 --recipient-user-id 987654321 --amount 0.1 \
-  --depositor-user-id 123456789 \
+npm run dev -- deposit --platform 1 --recipient-user-id 123456789 --amount 0.1 \
+  --depositor-user-id 987654321 \
   --content-url "https://twitter.com/user/status/1234567890123456789"
 ```
 
@@ -106,22 +106,22 @@ Since the CLI automatically loads from `.env`, you can run clean commands withou
 npm run dev -- deposit --platform 1 --recipient-user-id 123456789 --amount 0.01
 # Note the depositId from output (e.g., depositId=35)
 
-npm run dev -- get-deposit --deposit-id 35
+npm run dev -- get-deposit --deposit-id 1
 # Verify deposit exists and claimed=false
 
-npm run dev -- attest --platform 1 --user-id 123456789 --payout 0x1111111111111111111111111111111111111111 --deposit-id 35
+npm run dev -- attest --platform 1 --user-id 123456789 --payout 0x1111111111111111111111111111111111111111 --deposit-id 1
 # Creates EIP-712 signature
 
-npm run dev -- claim --platform 1 --user-id 123456789 --payout 0x1111111111111111111111111111111111111111 --deposit-id 35 --nonce $(date +%s)000 --expiry $(($(date +%s) + 86400))
+npm run dev -- claim --platform 1 --user-id 123456789 --payout 0x1111111111111111111111111111111111111111 --deposit-id 1 --nonce $(date +%s)000 --expiry $(($(date +%s) + 86400))
 # Signs and submits claim transaction
 
-npm run dev -- get-deposit --deposit-id 35
+npm run dev -- get-deposit --deposit-id 1
 # Verify claimed=true
 ```
 
 For JSON output (useful for scripts):
 ```bash
-npm run dev -- get-deposit --deposit-id 35 --json
+npm run dev -- get-deposit --deposit-id 1 --json
 ```
 
 ## Flag-based Commands
